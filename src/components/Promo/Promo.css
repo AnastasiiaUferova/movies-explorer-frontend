@@ -34,7 +34,17 @@
     width: 310px
 }
 
-.promo__button{
+.promo__link-container {
+    border-radius: 3px;
+    width: 129px;
+    height: 36px;
+    border: 1px solid rgba(0, 0, 0, .6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo__link {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -42,13 +52,17 @@
     line-height: 16px;
     background-color: transparent;
     box-sizing: border-box;
-    border: 1px solid rgba(0, 0, 0, .6);
-    border-radius: 3px;
-    width: 129px;
-    height: 36px;
+    text-decoration: none;
+    color:#000000;
 }
 
-.promo__button:hover {
+.promo__link:hover {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: background-color ease-out 1s;
+}
+
+.promo__link:active {
     cursor: pointer;
     opacity: 0.6;
     transition: background-color ease-out 1s;
@@ -114,11 +128,6 @@
         width: calc(100% - 30px*2);
 
     }
-
-
-
-
-
 
 
 }

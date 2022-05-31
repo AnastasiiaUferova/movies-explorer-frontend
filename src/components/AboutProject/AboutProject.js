@@ -3,9 +3,9 @@ import './AboutProject.css'
 
 function AboutProject () {
     return (
-        <div className="about-project">
-            <div className="about-project__title-container">
-                <h2 className="about-project__title">О проекте</h2>
+        <div className="about-project" id="about-project">
+            <div className="title-container">
+                <h2>О проекте</h2>
             </div>
             <div className="about-project__info-table">
                 <div className="about-project__info-block">
@@ -38,7 +38,6 @@ function AboutProject () {
             </div>
         </div>
         )
-
 }
 
 export default AboutProject;
