@@ -34,39 +34,6 @@
     width: 310px
 }
 
-.promo__link-container {
-    border-radius: 3px;
-    width: 129px;
-    height: 36px;
-    border: 1px solid rgba(0, 0, 0, .6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.promo__link {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    background-color: transparent;
-    box-sizing: border-box;
-    text-decoration: none;
-    color:#000000;
-}
-
-.promo__link:hover {
-    cursor: pointer;
-    opacity: 0.6;
-    transition: background-color ease-out 1s;
-}
-
-.promo__link:active {
-    cursor: pointer;
-    opacity: 0.6;
-    transition: background-color ease-out 1s;
-}
 
 .promo__pic {
     width: 310px;

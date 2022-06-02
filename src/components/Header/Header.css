@@ -1,9 +1,16 @@
 .header {
-    background-color:#DDDEE3;
     display: flex;
     justify-content: space-between;
     padding-left: 70px;
     padding-right: 70px;
+}
+
+.header_type_main {
+    background-color:#DDDEE3;
+}
+
+.header_type_other {
+    background-color:#FAFAFA;
 }
 
 .header__logo {
