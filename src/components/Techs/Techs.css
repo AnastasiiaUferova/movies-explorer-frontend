@@ -113,6 +113,7 @@
 @media (max-width: 500px) {
     .techs {
         padding: 70px 18px;
+        background-color: #FAFAFA;
     }
 
     .techs__info-title {

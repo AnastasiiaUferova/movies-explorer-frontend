@@ -1,7 +1,6 @@
 import React from "react";
 import './MoviesCardList.css'
 import MoviesCard from "../MoviesCard/MoviesCard";
-import MoreButton from "../MoreButton/MoreButton";
 
 function MoviesCardList () {
     return (
@@ -16,7 +15,6 @@ function MoviesCardList () {
             <MoviesCard />
             <MoviesCard />
         </div>
-            <MoreButton />
         </div>
         )
 }

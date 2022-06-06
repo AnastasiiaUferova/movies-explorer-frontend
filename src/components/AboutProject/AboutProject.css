@@ -115,6 +115,10 @@
         line-height: 18px;
     }
 
+    .about-project__info-block:nth-of-type(1) {
+        margin-right: 10px;
+    }
+
     .about-project__week-text {
         font-weight: 400;
     }
