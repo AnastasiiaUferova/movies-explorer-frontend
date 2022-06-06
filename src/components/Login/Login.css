@@ -1,0 +1,18 @@
+.login {
+    padding-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .login {
+        padding-top: 232px;
+    }
+}
+
+@media (max-width: 500px) {
+    .login {
+        padding-top: 56px;
+    }
+}

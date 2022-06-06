@@ -12,7 +12,6 @@ function FilterCheckbox () {
             <p className="checkbox__text">Короткометражки</p>
         </div>
         )
-
 }
 
 export default FilterCheckbox;

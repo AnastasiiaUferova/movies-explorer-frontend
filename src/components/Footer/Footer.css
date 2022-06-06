@@ -1,23 +1,23 @@
 .footer {
     padding: 79px 70px 20px;
-    background-color: #F8F8F8;
+    background-color: #f8f8f8;
 }
 
 .footer__text {
     align-self: center;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
     text-align: center;
-    color: #A0A0A0;
+    color: #a0a0a0;
     margin: 0;
     padding-bottom: 20px;
 }
 
 .footer__text-container {
-    border-bottom: 1px solid #E8E8E8;
+    border-bottom: 1px solid #e8e8e8;
 }
 
 .footer__table {
@@ -28,7 +28,7 @@
 }
 
 .footer__link {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -38,12 +38,18 @@
     margin-right: 20px;
 }
 
+.footer__link:hover {
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity ease-out 1s;
+}
+
 .footer__link:nth-of-type(3n) {
-    margin-right:0;
+    margin-right: 0;
 }
 
 .footer__copyright {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -55,15 +61,14 @@
 @media (max-width: 768px) {
     .footer {
         padding: 79px 30px 20px;
-        background-color: #F8F8F8;
+        background-color: #f8f8f8;
     }
 }
 
 @media (max-width: 500px) {
-
     .footer {
         padding: 79px 10px 10px;
-        background-color: #F8F8F8;
+        background-color: #f8f8f8;
     }
 
     .footer__text {
@@ -100,6 +105,6 @@
     .footer__copyright {
         font-size: 12px;
         line-height: 15px;
-        color: #A0A0A0;
+        color: #a0a0a0;
     }
 }

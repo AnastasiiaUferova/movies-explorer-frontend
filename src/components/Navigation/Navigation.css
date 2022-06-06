@@ -7,7 +7,7 @@
 }
 
 .navigation__film {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -34,7 +34,7 @@
 }
 
 .navigation__acc {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -44,7 +44,7 @@
     margin-right: 17px;
 }
 
-.navigation__acc:hover  {
+.navigation__acc:hover {
     opacity: 0.6;
 }
 
@@ -55,7 +55,7 @@
 .navigation__pic-container {
     width: 26px;
     height: 30px;
-    background-color: #F4F4F4;
+    background-color: #f4f4f4;
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -71,18 +71,15 @@
     margin-right: 210px;
 }
 
-
 @media (max-width: 700px) {
     .navigation__acc-container_type_menu {
         margin-right: 190px;
     }
-
 }
 @media (max-width: 600px) {
     .navigation__acc-container_type_menu {
         margin-right: 150px;
     }
-
 }
 
 @media (max-width: 500px) {
@@ -95,5 +92,4 @@
     .navigation__acc-container_type_menu {
         margin-right: 0;
     }
-
 }

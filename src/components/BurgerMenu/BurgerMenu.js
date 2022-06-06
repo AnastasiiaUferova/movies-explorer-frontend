@@ -22,28 +22,27 @@ function BurgerMenu() {
     const menuCheckboxClassName = `${openMenu ? " menu__btn menu__btn_checked" : "menu__btn"}`
 
     return (
-    <div className="menu">
-            <div className="menu__input-container">
-                <input className="menu__toggle" type="checkbox" value={isChecked} onChange={handleChange} />
-                <label className={menuCheckboxClassName}>
+        <div className="menu">
+        <div className="menu__input-container">
+            <input className="menu__toggle" type="checkbox" value={isChecked} onChange={handleChange} />
+            <label className={menuCheckboxClassName}>
                 <span></span>
-                </label>
-            </div>
+            </label>
+        </div>
         <div className={menuOpenClassName}>
-        <ul className="menu__box">
-            <li className="menu__link-item"><NavLink to="/" className="menu__link">Главная</NavLink></li>
-            <li className="menu__link-item"><NavLink to="/movies" className="menu__link">Фильмы</NavLink></li>
-            <li className="menu__link-item"><NavLink to="/saved-movies" className="menu__link">Сохраненные фильмы</NavLink></li>
-    </ul>
-        <div className="navigation__acc-container navigation__acc-container_type_menu">
+            <ul className="menu__box">
+                <li className="menu__link-item"><NavLink to="/" className="menu__link">Главная</NavLink></li>
+                <li className="menu__link-item"><NavLink to="/movies" className="menu__link">Фильмы</NavLink></li>
+                <li className="menu__link-item"><NavLink to="/saved-movies" className="menu__link">Сохраненные фильмы</NavLink></li>
+            </ul>
+            <div className="navigation__acc-container navigation__acc-container_type_menu">
                 <NavLink to="/profile" className="navigation__acc">Аккаунт</NavLink>
                 <div className="navigation__pic-container">
                     <img src={profile} alt="Логотип профиля" className="navigation__pic" />
                 </div>
             </div>
-
+        </div>
     </div>
-</div>
         )
 }
 

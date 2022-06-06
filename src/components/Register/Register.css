@@ -1,0 +1,18 @@
+.register {
+    padding-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .register {
+        padding-top: 232px;
+    }
+}
+
+@media (max-width: 500px) {
+    .register {
+        padding-top: 56px;
+    }
+}

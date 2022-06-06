@@ -6,11 +6,11 @@
 }
 
 .header_type_main {
-    background-color:#DDDEE3;
+    background-color: #dddee3;
 }
 
 .header_type_other {
-    background-color:#FAFAFA;
+    background-color: #fafafa;
 }
 
 .header__logo {
@@ -26,7 +26,7 @@
 }
 
 .header__button {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -44,7 +44,7 @@
 }
 
 .header__button:hover {
-    background: #3456F3;
+    background: #3456f3;
     border-radius: 3px;
     color: white;
     cursor: pointer;
@@ -52,14 +52,14 @@
 }
 
 @media (max-width: 768px) {
-    .header  {
+    .header {
         padding-left: 30px;
         padding-right: 30px;
     }
 }
 
 @media (max-width: 320px) {
-    .header  {
+    .header {
         padding-left: 14px;
         padding-right: 14px;
     }

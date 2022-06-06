@@ -28,7 +28,7 @@
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    transition: .4s;
+    transition: 0.4s;
     border-radius: 20px;
 }
 
@@ -40,12 +40,12 @@
     left: 2px;
     bottom: 2px;
     background-color: white;
-    transition: .4s;
+    transition: 0.4s;
     border-radius: 50%;
 }
 
 .checkbox__input:checked + .checkbox__slider {
-    background-color: #2BE080;
+    background-color: #2be080;
 }
 
 .checkbox__input:checked + .checkbox__slider:before {
@@ -53,7 +53,7 @@
 }
 
 .checkbox__text {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

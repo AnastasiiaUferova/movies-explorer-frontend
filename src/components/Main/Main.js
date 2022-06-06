@@ -16,7 +16,6 @@ function Main () {
             <Portfolio />
         </div>
         )
-
 }
 
 export default Main;
