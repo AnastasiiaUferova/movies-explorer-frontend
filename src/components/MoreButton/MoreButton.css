@@ -1,0 +1,35 @@
+.card-list__more {
+    padding-top: 50px;
+    padding-bottom: 80px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.card-list__more-button {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    height: 36px;
+    width: 320px;
+    border: 1px solid #e8e8e8;
+    background-color: #fafafa;
+    border-radius: 5px;
+}
+
+.card-list__more-button:hover {
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity ease-out 1s;
+}
+
+@media (max-width: 400px) {
+    .card-list__more-button {
+        height: 36px;
+        width: 240px;
+    }
+}

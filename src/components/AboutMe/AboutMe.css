@@ -1,0 +1,200 @@
+.about-me {
+    background-color: #fafafa;
+    padding: 110px 70px 101px;
+}
+
+.about-me__info-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 66px;
+}
+
+.about-me__info {
+    width: 600px;
+}
+
+.about-me__pic {
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+    object-fit: contain;
+    background-image: url(../../images/Avatar.jpeg);
+}
+
+.about-me__name {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.about-me__job {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.about-me__text {
+    margin-top: 26px;
+    margin-bottom: 99px;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #000000;
+}
+
+.about-me__link {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.about-me__link:hover {
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity ease-out 0.5s;
+}
+
+.about-me__link:nth-of-type(1n) {
+    margin-right: 20px;
+}
+
+@media (max-width: 1024px) {
+    .about-me__info {
+        width: 500px;
+    }
+}
+
+@media (max-width: 865px) {
+    .about-me__pic {
+        width: 255px;
+        height: 307px;
+    }
+
+    .about-me__info {
+        width: 364px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-me {
+        background-color: #fafafa;
+        padding: 90px 50px 91px;
+    }
+
+    .about-me__info-container {
+        margin-top: 66px;
+    }
+
+    .about-me__name {
+        font-size: 40px;
+        line-height: 40px;
+        margin-bottom: 16px;
+    }
+
+    .about-me__job {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .about-me__text {
+        margin-top: 20px;
+        margin-bottom: 87px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .about-me__link-container {
+        font-size: 28px;
+    }
+
+    .about-me__portfolio-pic {
+        width: 27px;
+    }
+}
+
+@media (max-width: 650px) {
+    .about-me__info-container {
+        flex-direction: column-reverse;
+    }
+
+    .about-me__pic {
+        width: 370px;
+        align-self: center;
+        object-fit: no-repeat;
+        object-position: no-repeat;
+    }
+
+    .about-me__name {
+        margin-top: 40px;
+    }
+
+    .about-me__info-container {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 500px) {
+    .about-me {
+        padding: 70px 14px;
+    }
+    .about-me__text {
+        width: 100%;
+    }
+
+    .about-me__portfolio-title {
+        margin-bottom: 40px;
+    }
+
+    .about-me__link-container {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .about-me__portfolio-pic {
+        width: 18px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 380px) {
+    .about-me__pic {
+        width: 100%;
+    }
+
+    .about-me__text {
+        width: 292px;
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 40px;
+    }
+
+    .about-me__name {
+        font-size: 30px;
+        line-height: 36px;
+        margin-bottom: 20§px;
+    }
+
+    .about-me__job {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .about-me__link:nth-of-type(1n) {
+        margin-right: 26px;
+    }
+}
