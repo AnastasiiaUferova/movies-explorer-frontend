@@ -3,6 +3,7 @@ import "./App.css";
 import "../../index.css";
 import { Route, Routes } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -13,6 +14,7 @@ import Login from "../Login/Login";
 import ErrorScreen from "../ErrorScreen/ErrorScreen";
 import Footer from "../Footer/Footer";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import moviesApi from "../../utils/MoviesApi";
 
 function App() {
     let location = useLocation();
@@ -27,12 +29,29 @@ function App() {
         return locations.includes(location.pathname);
     };
 
+    const [cards, setCards] = useState([]);
+
+
+    useEffect(() => {
+        moviesApi.getMovies()
+            .then((cards) => {
+                setCards(cards);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        localStorage.setItem('movies', JSON.stringify(cards));
+
+    }, [])
+    
+
+
     return (
         <div className="root">
             {isHeaderVisible() && <Header />}
             <Routes>
                 <Route path="/" element={<Main />}></Route>
-                <Route path="/movies" element={<Movies />}></Route>
+                <Route path="/movies" element={<Movies  cards={cards}/>}></Route>
                 <Route path="/saved-movies" element={<SavedMovies />}></Route>
                 <Route path="/signup" element={<Register />}></Route>
                 <Route path="/signin" element={<Login />}></Route>
