@@ -5,10 +5,27 @@
     padding-top: 70px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     row-gap: 38px;
     column-gap: 20px;
     align-self: center;
+}
+
+.card-list__message {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #000000;
+    margin-top: 20px;
+    opacity: 0.5;
+}
+
+.card-list__message-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -29,3 +46,4 @@
         gap: 34px;
     }
 }
+

@@ -4,21 +4,25 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import { useDebouncedCallback, } from 'use-debounce';
 import { useState, useEffect, useCallback} from "react";
 import MoreButton from "../MoreButton/MoreButton";
+import Preloader from "../Preloader/Preloader";
 
-function MoviesCardList ({cards, query}) {
+
+function MoviesCardList ({cards, query, isLoading, showError}) {
+    
 
     const [moviesCount, setMoviesCount] = useState(0);
 
-    const sessionStorageQuery = sessionStorage.getItem('query');
+    const sessionStorageQuery = JSON.parse(sessionStorage.getItem('query'));
 
+    const optionQuery = (query !=='') ? query : sessionStorageQuery;
 
-    const optionQuery = (query !=='') ?`${query}` : `${sessionStorageQuery}`;
+    const [isLiked, setIsLiked] = useState(false);
 
-    console.log(optionQuery)
-
-
-    const totalFiltered = cards.filter(card => card.nameRU.includes(optionQuery)).slice(0, moviesCount);
-
+    const totalFiltered = () => {
+        if (cards.lenght !==0){
+            return cards.filter(card => card.nameRU.includes(optionQuery)).slice(0, moviesCount);
+        }
+    }
 
     const Resize = useCallback(
         (width) => {
@@ -45,6 +49,7 @@ useEffect(() => {
         }, 200
     ) 
 
+    
 useEffect(() => {
     window.addEventListener('resize', dynamicResize)
     return () => {
@@ -53,28 +58,56 @@ useEffect(() => {
 }, [dynamicResize]) // при изменении ширины окна
 
 
+
+useEffect(() => {
+    window.addEventListener('resize', dynamicResize)
+    return () => {
+            window.removeEventListener('resize', dynamicResize);
+    } 
+}, [dynamicResize]) 
+
+
+
 function handleRender () {
-    setMoviesCount(window.innerWidth>768 ? moviesCount+3 : moviesCount+2)
+    setMoviesCount(window.innerWidth > 768 ? moviesCount+3 : moviesCount+2)
 }
 
 
-console.log((query !=='' || sessionStorageQuery !==''))
+const additionalComponent = () => {
+    if (isLoading && totalFiltered().length ===0 ) {
+        return <Preloader />
+    }
+    if (totalFiltered().length ===0) {
+        return (
+            <div className="card-list__message-container">
+                <p className="card-list__message">Ничего не найдено</p>
+            </div>
+        )
+    }
+    if (totalFiltered().length ===0 && showError) {
+        return (
+            <div className="card-list__message-container">
+                <p className="card-list__message">Во время запроса произошла ошибка. Возможно, проблема 
+                с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</p>
+            </div>
+        )
+    }
+}
 
-/*console.log(query);
-console.log(sessionStorageQuery) */
 
     return (
         <div>
-        <div className="card-list">
+        <div className="card-list"> 
+            {additionalComponent()}
         <div className="card-list__container">
-            {(query !=='' || sessionStorageQuery !=='') &&
-        totalFiltered
+            {((query !==''|| sessionStorageQuery !=='') && totalFiltered().length !==0) &&
+        totalFiltered()
         .map((card) => (
                     <MoviesCard key={card.id} card={card}/>
                 ))}
         </div>
         </div>
-        { (query !== '' && totalFiltered.length === moviesCount && totalFiltered.length > 3) &&
+        { (query !== "" && totalFiltered().length === moviesCount && totalFiltered().length > 3) &&
         <MoreButton handleRender={handleRender} />}
         </div>
         )

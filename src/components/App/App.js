@@ -16,7 +16,7 @@ import Footer from "../Footer/Footer";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import moviesApi from "../../utils/MoviesApi";
 
-function App() {
+function App(props) {
     let location = useLocation();
 
     const isHeaderVisible = () => {
@@ -28,21 +28,6 @@ function App() {
         const locations = ["/", "/saved-movies", "/movies"];
         return locations.includes(location.pathname);
     };
-
-    const [cards, setCards] = useState([]);
-
-
-    useEffect(() => {
-        moviesApi.getMovies()
-            .then((cards) => {
-                setCards(cards);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-        localStorage.setItem('movies', JSON.stringify(cards));
-
-    }, [])
     
 
 
@@ -51,7 +36,7 @@ function App() {
             {isHeaderVisible() && <Header />}
             <Routes>
                 <Route path="/" element={<Main />}></Route>
-                <Route path="/movies" element={<Movies  cards={cards}/>}></Route>
+                <Route path="/movies"  element={<Movies />}></Route>
                 <Route path="/saved-movies" element={<SavedMovies />}></Route>
                 <Route path="/signup" element={<Register />}></Route>
                 <Route path="/signin" element={<Login />}></Route>
@@ -65,4 +50,3 @@ function App() {
 }
 
 export default App;
-

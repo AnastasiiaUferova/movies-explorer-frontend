@@ -5,11 +5,10 @@ import { useState, useEffect } from "react";
 function SearchForm ({onChageQuery}) {
 
 const [searchQuery, setSearchQuery] = useState(() => {
-  // getting stored value
-        const saved = sessionStorage.getItem('query');
-        const initialValue = JSON.parse(saved);
-        return initialValue || "";
-});
+            const saved = sessionStorage.getItem('query');
+            const initialValue = JSON.parse(saved);
+            return initialValue || "";
+        });
 
     function handleChangeQuery(e) {
         setSearchQuery(e.target.value);
@@ -21,10 +20,8 @@ const [searchQuery, setSearchQuery] = useState(() => {
     }
 
     useEffect(() => {
-        sessionStorage.setItem('query', JSON.stringify(searchQuery));
-
-
-    }, [searchQuery]);
+        sessionStorage.setItem('query', JSON.stringify(searchQuery))
+    }, [searchQuery]); 
 
 
     return (
