@@ -16,7 +16,7 @@ const [searchQuery, setSearchQuery] = useState(() => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        onChageQuery(searchQuery);
+        onChageQuery(searchQuery.toLowerCase() || searchQuery.toUpperCase());
     }
 
     useEffect(() => {

@@ -25,6 +25,7 @@ class MoviesApi {
     changeFilmStatus(id, isLiked) {
         return fetch(`${this._address}/cards/${id}/likes`, {
             method: isLiked ? 'DELETE' : 'PUT',
+            mode: "no-cors",
             headers: {
             "Content-Type": "application/json",
             'Accept': 'application/json'

@@ -1,5 +1,5 @@
-class Api {
-    constructor({ address }) {
+class MainApi {
+    constructor({ address}) {
         this._address = address;
     }
 
@@ -10,29 +10,38 @@ class Api {
         return Promise.reject(`Ошибка: ${response.status}`);
     }
 
-    getMovies() {
-        return fetch(`${this._address}/cards`, {
+    getSavedMovies() {
+        return fetch("https://movie-explorer.api.nomoredomains.xyz/movies", {
             method: "GET",
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
                 "Content-Type": "application/json",
-                'Accept': 'application/json'
+                'Accept': 'application/json',
             },
         })
             .then(this._handleResponse);
     }
 
-    addCard(data) {
-        return fetch(this._address + "/cards", {
+    addSavedMovie(data) {
+        return fetch(this._address + "/movies", {
             method: "POST",
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
                 "Content-Type": "application/json",
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                name: data.name,
-                link: data.link
+                country: data.country, 
+                director: data.director,
+                duration: data.duration,
+                year: data.year,
+                description: data.description,
+                image: data.image,
+                trailerLink: data.trailerLink,
+                nameRU: data.nameRU,
+                nameEN: data.nameEN,
+                thumbnail: data.thumbnail,
+                movieId: data.movieId,
             }),
         })
             .then(this._handleResponse)
@@ -42,7 +51,7 @@ class Api {
         return fetch(`${this._address}/users/me`, {
             method: "GET",
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
                 "Content-Type": "application/json",
                 'Accept': 'application/json'
             },
@@ -54,13 +63,13 @@ class Api {
         return fetch(`${this._address}/users/me`, {
         method: "PATCH",
         headers: {
-            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
             "Content-Type": "application/json",
             'Accept': 'application/json'
         },
         body: JSON.stringify({
             name: data.name,
-            about: data.about,
+            email: data.email,
         })
     })
     .then(this._handleResponse);
@@ -68,11 +77,11 @@ class Api {
     }
 
 
-    deleteCard(cardId) {
-        return fetch (`${this._address}/cards/${cardId}`, {
+    deleteCard(movieID) {
+        return fetch (`${this._address}/movies/${movieID}`, {
         method: "DELETE",
         headers: {
-            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
             "Content-Type": "application/json",
             'Accept': 'application/json'
         },
@@ -80,28 +89,13 @@ class Api {
         .then(this._handleResponse);
     }
 
-    changeAvatar(data) {
-        return fetch(`${this._address}/users/me/avatar`, {
-        method: "PATCH",
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-            "Content-Type": "application/json",
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-            avatar: data.avatar
-        })
-    })
-    .then(this._handleResponse);
-    
-}
 
 
-    changeLikeCardStatus(id, isLiked) {
-        return fetch(`${this._address}/cards/${id}/likes`, {
-            method: isLiked ? 'DELETE' : 'PUT',
+    changeLikeCardStatus(id) {
+        return fetch(`${this._address}/movies/${id}`, {
+            method: 'DELETE',
             headers: {
-            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
             "Content-Type": "application/json",
             'Accept': 'application/json'
         },
@@ -111,8 +105,10 @@ class Api {
     }
     
 
-const api = new Api({
-    address: 'https://mesto-back.u.nomoredomains.xyz',
+const mainApi = new MainApi({
+    address: 'https://movie-explorer.api.nomoredomains.xyz',
 });
 
-export default api
+export default mainApi
+
+

@@ -4,48 +4,50 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { useState, useEffect } from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import moviesApi from "../../utils/MoviesApi";
+import mainApi from "../../utils/MainApi";
 
 
 function SavedMovies () {
 
     const [searchQuery, setSearchQuery] = useState('');
-    const [optionCards, setOptionCards] =  useState([]);
-    const [showError, setShowError] = useState(false)
+    const [showError, setShowError] = useState(false);
 
     const [isChecked, setIsChecked] = useState(() => {
         return JSON.parse(sessionStorage.getItem('checked'))
     });
 
-    const [cards, setCards] = useState([]);
+    const [savedCards, setSavedCards] = useState([]);
+    const [optionCards, setOptionCards] =  useState([]);
 
     const [isLoading, setIsLoading] = useState([]);
+
+    const [toggleCardState, setToggleCardState] = useState(false);
     
     
     useEffect(() => {
         sessionStorage.setItem('checked', JSON.stringify(isChecked));
         if (isChecked) {
-            setOptionCards(cards.filter(card => card.duration <= 40))
+            setOptionCards(savedCards.filter(card => card.duration <= 40))
         }
-        else setOptionCards(cards)
+        else setOptionCards(savedCards)
         
-    }, [isChecked, cards]); 
+    }, [isChecked, savedCards]); 
 
 
 useEffect(() => {
         if (searchQuery === "") {
-            setCards(JSON.parse(localStorage.getItem('movies')))
+            setSavedCards(JSON.parse(localStorage.getItem('saved-movies')))
         }
     }, [searchQuery]);
 
-
-    function handleChangeQuery(item) {
-        setSearchQuery(item);
-        setIsLoading(true)
-        moviesApi.getMovies()
+    
+useEffect(()=> {
+    setIsLoading(true)
+        mainApi.getSavedMovies()
             .then((cards) => {
-                setCards(cards);
-                localStorage.setItem('movies', JSON.stringify(cards))
+                setSavedCards(cards);
+                console.log(cards)
+                localStorage.setItem('saved-movies', JSON.stringify(cards))
             })
             .catch((err) => {
                 setShowError(true);
@@ -55,6 +57,41 @@ useEffect(() => {
                 setIsLoading(false)
             }
             )
+}, [])
+
+
+useEffect(()=> {
+
+    if (toggleCardState) {
+        mainApi.getSavedMovies()
+        .then((cards) => {
+            localStorage.setItem('saved-movies', JSON.stringify(cards))
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+    
+}, [toggleCardState])
+
+
+
+function handleDeleteCard(card) {
+    return mainApi
+        .deleteCard(card._id)
+        .then(() => {
+            setSavedCards((state) => state.filter((newCard) => newCard._id !== card._id))
+            localStorage.setItem('saved-movies', JSON.stringify(savedCards))
+            setToggleCardState(true);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
+
+    function handleChangeQuery(item) {
+        setSearchQuery(item);
     }
 
     function handleCheck(e) {
@@ -65,12 +102,9 @@ useEffect(() => {
     <div className="movies">
     <SearchForm onChageQuery={handleChangeQuery} />
     <FilterCheckbox handleCheck={handleCheck} checked={isChecked}/>
-    <MoviesCardList query={searchQuery} cards={optionCards} isLoading={isLoading} showError={showError}/>
+    <MoviesCardList cards={optionCards} savedCards={optionCards} query={searchQuery} isLoading={isLoading} showError={showError} handleDeleteCard={handleDeleteCard}/>
 </div>
     )
 }
 
 export default SavedMovies;
-
-
-
