@@ -11,7 +11,7 @@ class MainApi {
     }
 
     getSavedMovies() {
-        return fetch("https://movie-explorer.api.nomoredomains.xyz/movies", {
+        return fetch(this._address + "/movies", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -90,18 +90,6 @@ class MainApi {
     }
 
 
-
-    changeLikeCardStatus(id) {
-        return fetch(`${this._address}/movies/${id}`, {
-            method: 'DELETE',
-            headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-            "Content-Type": "application/json",
-            'Accept': 'application/json'
-        },
-        })
-            .then(this._handleResponse)
-        }
     }
     
 

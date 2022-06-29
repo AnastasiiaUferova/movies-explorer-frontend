@@ -3,28 +3,29 @@ import './MoviesCard.css'
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function MoviesCard ({card, onCardClick, isSaved }) {
+function MoviesCard ({card, onCardClick, isSaved, isLiked}) {
 
     let location = useLocation();
     const inSavedList = location.pathname === "/saved-movies";
-    const [isLiked, setIsLiked] = useState(false);
+   // const [isLiked, setIsLiked] = useState(false);
+
+
+    /*const isSaved = JSON.parse(localStorage.getItem('saved-movies')).some(
+        (i) => i.movieId === card.movieId
+    );*/
 
     const cardClassName = () => {
-        if (isLiked ) {
-            return `card__button card__button_type_saved`
-        }
 
         if (inSavedList) {
             return `card__button card__button_type_delete`
         }
 
-        if (isSaved & !inSavedList) {
+        if (isSaved) {
             return `card__button card__button_type_saved`
         }
-
         return `card__button`
     }
-    
+
 
     function convertMinutes(time){
         const hours = Math.trunc(time/60);
@@ -33,14 +34,8 @@ function MoviesCard ({card, onCardClick, isSaved }) {
     }
 
     function handleClick() {
-        if (isLiked === true) {
-            setIsLiked(false);
-            onCardClick(card)
-        }
-        else setIsLiked(true);
+
         onCardClick(card)
-
-
     }
 
     const imageOptions = () => {

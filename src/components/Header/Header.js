@@ -7,8 +7,9 @@ import logo from "../../images/logoLanding.svg";
 import HeaderLinks from "../HeaderLinks/HeaderLinks"
 import Navigation from "../Navigation/Navigation"
 import BurgerMenu from "../BurgerMenu/BurgerMenu"
+import { NavLink } from "react-router-dom";
 
-function Header () {
+function Header ({loggedIn}) {
     let location = useLocation();
     const isMain = location.pathname === "/";
 
@@ -32,20 +33,14 @@ function Header () {
     const headerThemeClassName = `${isMain ? "header header_type_main" : " header header_type_other"}`;
     const headerComponents = isSmallWidth ? <BurgerMenu /> : <Navigation />;
 
-    const isMenuVisible = () => {
-        const locations = ["/saved-movies", "/movies", "/profile"];
-        return locations.includes(location.pathname);
-    };
-
     return (
     
         <header className={headerThemeClassName}>
-            <img src={logo} alt="Логотип" className="header__logo" />
-
-            {location.pathname === "/"  && (
+            <NavLink className="profile__link" to="/"><img src={logo} alt="Логотип" className="header__logo" /></NavLink>
+            {!loggedIn && (
                 <HeaderLinks />
             )}
-            {isMenuVisible() && (
+            {loggedIn && (
                 headerComponents
             )}
         </header>

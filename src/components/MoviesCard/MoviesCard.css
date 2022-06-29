@@ -17,6 +17,7 @@
 .card__pic-link:hover {
     opacity: 0.6;
     transition: opacity ease-in-out 0.5s;
+    cursor: pointer;
 }
 
 

@@ -6,45 +6,32 @@ import { useState, useEffect, useCallback} from "react";
 import MoreButton from "../MoreButton/MoreButton";
 import Preloader from "../Preloader/Preloader";
 import { useLocation } from "react-router-dom";
-import mainApi from "../../utils/MainApi";
 
 
-function MoviesCardList ({cards, query, isLoading, showError, handleToggleCard, handleDeleteCard, activeSearch, savedCards, isSaved}) {
+function MoviesCardList ({cards, query, isLoading, showError, activeSearch, savedCards, onCardDelete, onCardToggle }) {
 
     let location = useLocation();
-    
     const [moviesCount, setMoviesCount] = useState(0);
-
     const sessionStorageQuery = JSON.parse(sessionStorage.getItem('query'));
-
     const optionQuery = (query !=='') ? query : sessionStorageQuery;
 
     const totalFilteredInitial = () => {
-        
         let initialList = []
-
-        if (JSON.parse(sessionStorage.getItem('movies')) === null) {
-            return initialList
-        }
-
-        if (cards !== null ){
+        if (cards){
             return cards.filter(card => card.nameRU.includes(optionQuery)).slice(0, moviesCount);
         }
-
         return initialList
     }
-
 
     const totalFilteredSaved = () => {
         let initialSavedList = []
 
-        if (savedCards !== null){
+        if (savedCards){
             return savedCards.filter(card => card.nameRU.includes(optionQuery));
         }
-        if (JSON.parse(localStorage.getItem('saved-movies')) === null) {
-            return initialSavedList
-        }
+        return initialSavedList
     }
+
 
 
     const Resize = useCallback(
@@ -64,7 +51,6 @@ function MoviesCardList ({cards, query, isLoading, showError, handleToggleCard, 
 useEffect(() => {
         Resize(window.innerWidth)
     }, [Resize]) // изначальная отрисовка
-
 
     const dynamicResize = useDebouncedCallback(
         () => {
@@ -88,7 +74,6 @@ useEffect(() => {
             window.removeEventListener('resize', dynamicResize);
     } 
 }, [dynamicResize]) 
-
 
 
 function handleRender () {
@@ -133,6 +118,7 @@ const additionalSavedMoviesComponent = () => {
                 <p className="card-list__message">Во время запроса произошла ошибка. Возможно, проблема 
                 с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</p>
             </div>
+    
         )
     }
 }
@@ -150,10 +136,13 @@ const renderAdditionalComponent = () => {
 }
 
 
+
 const renderInitial = (query !==''|| sessionStorageQuery !=='') && totalFilteredInitial().length !==0 && location.pathname === "/movies";
 const renderSaved = location.pathname === "/saved-movies";
 
 const finalCards = renderInitial ? totalFilteredInitial() : totalFilteredSaved()
+
+
 
 
     return (
@@ -164,16 +153,18 @@ const finalCards = renderInitial ? totalFilteredInitial() : totalFilteredSaved()
         {finalCards.map((card) => {
 
             let isSaved;
+
             let idArray = []
-            const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies'))
+            const storedSavedMovies = JSON.parse(localStorage.getItem('saved-movies')) || []
             storedSavedMovies.forEach(card => idArray.push(card.movieId))
             if (idArray.includes(card.id)) {
-                isSaved = true
+            isSaved = true;
             }
-            else isSaved = false
+            else {
+                isSaved = false;
+            }
 
-
-    return <MoviesCard key={card.id || card._id } isSaved={isSaved} card={card} onCardClick={renderSaved ? handleDeleteCard : handleToggleCard}/>
+    return <MoviesCard key={card.id || card._id } isSaved={isSaved} card={card} onCardClick={renderSaved ? onCardDelete : onCardToggle}/>
         })}
         </div>
         </div>
@@ -186,10 +177,3 @@ const finalCards = renderInitial ? totalFilteredInitial() : totalFilteredSaved()
 
 
 export default MoviesCardList;
-
-
-
-
-
-/* console.log(idArray)
-            console.log(card)*/

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useCallback } from "react";
 import './SearchForm.css';
 import { useState, useEffect } from "react";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function SearchForm ({onChageQuery}) {
 
@@ -10,13 +11,51 @@ const [searchQuery, setSearchQuery] = useState(() => {
             return initialValue || "";
         });
 
+const [error, setError] = useState('');
+const [isValid, setIsValid] = useState(true)
+
     function handleChangeQuery(e) {
-        setSearchQuery(e.target.value);
+        const target = e.target;
+        const value = target.value;
+        setSearchQuery(value);
+        setIsValid(true);
+        setError("");
     }
+
+    function validate () {
+        function isRequired(value) {
+            return value != null && value.trim().length > 0;
+        }
+    
+        if (!isRequired(searchQuery)) {
+            setIsValid(false);
+            setError("Нужно ввести ключевое слово");
+        } 
+        else {
+            setIsValid(true);
+            setError("");
+        }
+    }
+
+    
+
+    /*const resetForm = useCallback(
+        (newValues = {}, newErrors = {}, newIsValid = false) => {
+            setSearchQuery(newValues);
+            setErrors(newErrors);
+            setIsValid(newIsValid);
+        },
+        [setSearchQuery, setErrors, setIsValid]
+    );*/
+
 
     function handleSubmit(e) {
         e.preventDefault();
+        validate ()
+        if(isValid) {
         onChageQuery(searchQuery.toLowerCase() || searchQuery.toUpperCase());
+        }
+        else return 
     }
 
     useEffect(() => {
@@ -28,9 +67,10 @@ const [searchQuery, setSearchQuery] = useState(() => {
         <div className="search">
             <div className="search__container">
                 <form className="search__container-form" onSubmit={handleSubmit}>
-                    <input value={searchQuery} onChange={handleChangeQuery} className="search__input" placeholder="Фильм" type="text" required></input>
+                    <input value={searchQuery} onChange={handleChangeQuery} className="search__input" placeholder="Фильм" type="text" ></input>
                     <button className="search__button" type="submit"></button>
                 </form>
+                <ErrorMessage text={error} isValid={isValid}/>
             </div>
         </div>
         )
@@ -38,3 +78,8 @@ const [searchQuery, setSearchQuery] = useState(() => {
 }
 
 export default SearchForm;
+
+
+
+
+
