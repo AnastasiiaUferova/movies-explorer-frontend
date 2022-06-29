@@ -334,7 +334,6 @@ function handleCardAdd (data) {
         
     );
 
-    
 }
 
 export default App;
