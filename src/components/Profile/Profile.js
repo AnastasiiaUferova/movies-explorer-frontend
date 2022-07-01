@@ -28,7 +28,12 @@ function Profile({onUpdateUser, signOut} ) {
             console.log(err)
         })
     }
-
+const differentValues = () => {
+    if ((values.name !== currentUser.name) || (values.email !== currentUser.email)){
+        return true
+    }
+    else return false
+}
 
     return (
 <div className="profile">
@@ -48,7 +53,7 @@ function Profile({onUpdateUser, signOut} ) {
         <ErrorMessage isValid={isValid} text={errors.email} />
 
         <div className="profile__link-container">
-            <button type="submit" disabled={!isValid} className="profile__button">Редактировать</button>
+            <button type="submit" disabled={!isValid || !differentValues()} className="profile__button">Редактировать</button>
             <button onClick={signOut} className="profile__button"><NavLink className="profile__link" to="/">Выйти из аккаунта</NavLink></button>
         </div>
     </form>

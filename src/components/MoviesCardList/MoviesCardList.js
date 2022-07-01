@@ -8,30 +8,49 @@ import Preloader from "../Preloader/Preloader";
 import { useLocation } from "react-router-dom";
 
 
-function MoviesCardList ({cards, query, isLoading, showError, activeSearch, savedCards, onCardDelete, onCardToggle }) {
+function MoviesCardList ({cards, query, isLoading, showError, activeSearch, savedCards, onCardDelete, onCardToggle, renderSavedCards, renderInitialCards}) {
+
 
     let location = useLocation();
     const [moviesCount, setMoviesCount] = useState(0);
     const sessionStorageQuery = JSON.parse(sessionStorage.getItem('query'));
-    const optionQuery = (query !=='') ? query : sessionStorageQuery;
+
+    const initialMoviesQuery = (query !=='') ? query : sessionStorageQuery;
+    const savedMoviesQuery = query;
+
+    const filterInitialRegex = new RegExp(initialMoviesQuery, 'gi');
+    const filterSavedRegex = new RegExp(savedMoviesQuery  , 'gi');
+
+
+    useEffect(() => {
+        if (sessionStorageQuery) {
+            renderInitialCards();
+            renderSavedCards();
+        }
+    }, []);
+
 
     const totalFilteredInitial = () => {
         let initialList = []
         if (cards){
-            return cards.filter(card => card.nameRU.includes(optionQuery)).slice(0, moviesCount);
+            return cards.filter(card => filterInitialRegex.test(card.nameRU)).slice(0, moviesCount);
         }
         return initialList
     }
+
+    /*const [newRenderedCards, setNewRenderedCards] = useState(() => {
+        totalFilteredInitial()
+    });*/
+
 
     const totalFilteredSaved = () => {
         let initialSavedList = []
 
         if (savedCards){
-            return savedCards.filter(card => card.nameRU.includes(optionQuery));
+            return savedCards.filter(card => filterSavedRegex.test(card.nameRU));
         }
         return initialSavedList
     }
-
 
 
     const Resize = useCallback(
@@ -74,6 +93,10 @@ useEffect(() => {
             window.removeEventListener('resize', dynamicResize);
     } 
 }, [dynamicResize]) 
+
+/*useEffect(() => {
+
+}, []) */
 
 
 function handleRender () {
@@ -141,9 +164,6 @@ const renderInitial = (query !==''|| sessionStorageQuery !=='') && totalFiltered
 const renderSaved = location.pathname === "/saved-movies";
 
 const finalCards = renderInitial ? totalFilteredInitial() : totalFilteredSaved()
-
-
-
 
     return (
         <div>

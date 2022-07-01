@@ -14,6 +14,7 @@ function Movies ({isLoading, cards, showError, renderInitialCards, onCardToggle,
         return JSON.parse(sessionStorage.getItem('checked'))
     });
 
+
     useEffect(() => {
         sessionStorage.setItem('checked', JSON.stringify(isChecked));
         if (isChecked) {

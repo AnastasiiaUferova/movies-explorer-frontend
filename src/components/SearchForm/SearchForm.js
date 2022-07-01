@@ -1,15 +1,23 @@
-import React, { useCallback } from "react";
+import React from "react";
+import { useLocation } from "react-router-dom";
 import './SearchForm.css';
 import { useState, useEffect } from "react";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function SearchForm ({onChageQuery}) {
 
+let location = useLocation();
+
+
 const [searchQuery, setSearchQuery] = useState(() => {
-            const saved = sessionStorage.getItem('query');
-            const initialValue = JSON.parse(saved);
-            return initialValue || "";
-        });
+    if (sessionStorage.getItem('query') && location.pathname === "/movies") {
+        const saved = sessionStorage.getItem('query');
+        const initialValue = JSON.parse(saved);
+        return initialValue 
+    }
+
+    else return ""
+});
 
 const [error, setError] = useState('');
 const [isValid, setIsValid] = useState(true)
@@ -37,16 +45,6 @@ const [isValid, setIsValid] = useState(true)
         }
     }
 
-    
-
-    /*const resetForm = useCallback(
-        (newValues = {}, newErrors = {}, newIsValid = false) => {
-            setSearchQuery(newValues);
-            setErrors(newErrors);
-            setIsValid(newIsValid);
-        },
-        [setSearchQuery, setErrors, setIsValid]
-    );*/
 
 
     function handleSubmit(e) {
@@ -59,8 +57,11 @@ const [isValid, setIsValid] = useState(true)
     }
 
     useEffect(() => {
-        sessionStorage.setItem('query', JSON.stringify(searchQuery))
-    }, [searchQuery]); 
+        if (location.pathname === "/movies") {
+            sessionStorage.setItem('query', JSON.stringify(searchQuery))
+        }
+
+    }, [searchQuery, location.pathname]); 
 
 
     return (

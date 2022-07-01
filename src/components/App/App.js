@@ -23,6 +23,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext"
 import * as auth from "../../utils/auth";
 import ProtectedRoutes from "../ProtectedRoute/ProtectedRoute";
 
+
 function App() {
     let location = useLocation();
     const navigate = useNavigate();
@@ -39,10 +40,17 @@ function App() {
     const [isSaved, setIsSaved] = useState(false);
 
 
-
     useEffect(() => {
         tokenCheck()
     }, [])
+
+    useEffect(() => {
+        const locations = ["/signup", "/signin"];
+        if(loggedIn && (locations.includes(location.pathname))) {
+                navigate("/");
+        }
+        else navigate(location.pathname);
+    }, [loggedIn, location.pathname, navigate])
 
 
 useEffect(() => {
@@ -54,26 +62,23 @@ useEffect(() => {
         .catch((err) => {
             console.log(err);
         });
-
-        renderSavedCards();
     }
 }, [loggedIn, userData]);
-
-
 
 
 function renderSavedCards () {
     setIsLoading(true)
     mainApi.getSavedMovies()
         .then((cards) => {
-            const savedArray = cards.map((item) => ({ ...item, id: item.movieId }));
+
+            const savedArray = cards
+            .filter((item) => item.owner === currentUser._id)
+            .map((item) => ({ ...item, id: item.movieId }));
             localStorage.setItem('saved-movies', JSON.stringify(savedArray));
-            
             setSavedCards(savedArray);
             const idArray = []
             JSON.parse(localStorage.getItem('saved-movies')).forEach(card => idArray.push(card.movieId))
             setSavedCardsIds(idArray);
-
         })
         .catch((err) => {
             setImageTooltip(cross);
@@ -86,7 +91,6 @@ function renderSavedCards () {
         }
         )
 }
-
 
 function renderInitialCards() {
     setIsLoading(true);
@@ -107,17 +111,12 @@ function renderInitialCards() {
         )
     }
 
-    console.log()
-
-
 function handleCardDelete(card) {
         return mainApi
             .deleteCard(card._id)
             .then(() => {
                 setSavedCards((state) => state.filter((newCard) => newCard._id !== card._id));
                 localStorage.setItem('saved-movies', JSON.stringify(savedCards))
-                const newArray = JSON.parse(localStorage.getItem('saved-movies')).filter((item) => item.movieId !== card.movieId);
-                setSavedCardsIds(newArray)
             })
             .catch(() => {
                 setImageTooltip(cross);
@@ -125,7 +124,6 @@ function handleCardDelete(card) {
                 setIsTooltipPopupOpen(true);
             })
     }
-
 
 function handleCardAdd (data) {
     let selectedCard = { 
@@ -147,7 +145,6 @@ function handleCardAdd (data) {
                 setSavedCardsIds([...savedCardsIds, selectedCard.movieId])
                 localStorage.setItem('saved-movies', JSON.stringify(savedCards))
                 setIsSaved(true)
-
             })
             .catch(() => {
                 setImageTooltip(cross);
@@ -158,9 +155,7 @@ function handleCardAdd (data) {
                 setIsLoading(false)
             }
             )
-            
         }
-
 
         function handleToggleCard(card) {
             renderSavedCards ()
@@ -174,12 +169,14 @@ function handleCardAdd (data) {
             }
         }
 
-
     function handleUpdateUser(userData) {
         return mainApi
             .changeUserInfo(userData)
             .then((result) => {
                 setCurrentUser(result);
+                setImageTooltip(tick);
+                setTextTooltip("Вы успешно изменили данные профиля!");
+                setIsTooltipPopupOpen(true);
             })
             .catch((err) => {
                 setImageTooltip(cross);
@@ -261,7 +258,7 @@ function handleCardAdd (data) {
                 if (data) {
                     setUserData({ name: data.name, email: data.email});
                     setLoggedIn(true);
-                    navigate("/movies");
+                    navigate(location.pathname);
                 }
             });
         }
@@ -279,6 +276,7 @@ function handleCardAdd (data) {
             setCurrentUser({});
             sessionStorage.removeItem('movies');
             sessionStorage.removeItem('saved-movies');
+            sessionStorage.removeItem('query');
             setCards([]);
             setSavedCards([]);
             navigate("/");
@@ -300,11 +298,11 @@ function handleCardAdd (data) {
         <div className="root">
             {isHeaderVisible() && <Header loggedIn={loggedIn}/>}
             <Routes>
-            <Route exact path="/" element={<Main />}></Route>
-            <Route exact path="/signup" element={<Register handleRegister={handleRegister}/>}></Route>
-            <Route exact path="/signin" element={<Login handleLogin={handleLogin}/>}></Route>
+            <Route path="/" element={<Main />}></Route>
+            <Route path="/signup" element={<Register handleRegister={handleRegister}/>}></Route>
+            <Route path="/signin" element={<Login handleLogin={handleLogin}/>}></Route>
             <Route path="*" element={<ErrorScreen />}></Route>
-                <Route exact path="/movies"  element={<ProtectedRoutes loggedIn={loggedIn}>
+                <Route path="/movies"  element={<ProtectedRoutes loggedIn={loggedIn}>
                     <Movies 
                     cards={cards}
                     renderInitialCards={renderInitialCards}
@@ -314,10 +312,11 @@ function handleCardAdd (data) {
                     isSaved={isSaved}
                     />
                     </ProtectedRoutes>}></Route>
-                <Route exact path="/saved-movies" element={<ProtectedRoutes loggedIn={loggedIn}>
+                <Route path="/saved-movies" element={<ProtectedRoutes loggedIn={loggedIn}>
                     <SavedMovies
                     savedCards={savedCards}
                     renderSavedCards={renderSavedCards}
+                    renderInitialCards={renderInitialCards}
                     isLoading={isLoading}
                     onCardDelete={handleCardDelete}
                     isSaved={isSaved}

@@ -61,7 +61,7 @@ function Form({handleSubmitRegister, title, text, button, handleSubmitLogin}) {
 
     return (
         <form className="form" onSubmit={handleSubmit}>
-        <img src={logo} alt="Логотип" className="form__logo" />
+        <NavLink className="profile__link" to="/"><img src={logo} alt="Логотип" className="form__logo"/></NavLink>
         <h1 className="form__title">{title}</h1>
     
         {location.pathname === "/signup" && NameInput()
