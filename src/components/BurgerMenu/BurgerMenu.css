@@ -17,6 +17,7 @@
 .menu__container_opened {
     visibility: visible;
     opacity: 1;
+    z-index: 2;
 }
 
 .menu__toggle {
@@ -35,7 +36,6 @@
     display: flex;
     flex-direction: row-reverse;
     position: relative;
-    z-index: 2;
 }
 
 .menu__btn {
@@ -67,7 +67,7 @@
 
 .menu__box {
     margin-top: 159px;
-    margin-bottom: 621px;
+    margin-bottom: 60.7vh;
     list-style: none;
     width: 340px;
     padding-left: 0;

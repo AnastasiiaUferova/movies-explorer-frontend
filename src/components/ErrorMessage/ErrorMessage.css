@@ -7,8 +7,13 @@
     color: #ee3465;
     margin-top: 10px;
     visibility: hidden;
+    height: 10px;
+    width: 10px;
+    opacity: 0;
 }
 
 .error-message__text_visible {
     visibility: visible;
+    opacity: 100%;
+
 }

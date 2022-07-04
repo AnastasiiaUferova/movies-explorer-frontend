@@ -2,10 +2,11 @@ import React from "react";
 import './MoreButton.css'
 
 
-function MoreButton () {
+function MoreButton ({handleRender}) {
+
     return (
         <div className="card-list__more">
-            <button className="card-list__more-button">Ещё</button>
+            <button onClick={handleRender} className="card-list__more-button">Ещё</button>
         </div>
         )
 }
