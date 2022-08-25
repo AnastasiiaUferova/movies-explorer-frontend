@@ -43,12 +43,10 @@ function Form({handleSubmitRegister, title, text, button, handleSubmitLogin}) {
     }
 }
 
-    
-
     const NameInput = () => {
         return (
         <div className="form__item-text-container">
-            <p className="form__item-text">Имя</p>
+            <p className="form__item-text">Name</p>
             <input onChange={handleChange} value={values.name || ''} id="input_name" type="name" name="name" className="form__item-input"  />
             <ErrorMessage isValid={isValid} text={errors.name} />
         </div>

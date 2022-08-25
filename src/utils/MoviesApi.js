@@ -41,7 +41,3 @@ const moviesApi = new MoviesApi ({
 });
 
 export default moviesApi
-
-
-
-// Authorization: `Bearer ${localStorage.getItem('jwt')}`,

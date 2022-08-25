@@ -6,15 +6,15 @@ function AboutMe () {
     return (
     <div className="about-me">
         <div className="title-container">
-            <h2>Студент</h2>
+            <h2>Student</h2>
         </div>
         <div className="about-me__info-container">
             <div className="about-me__info">
-                <h3 className="about-me__name">Анастасия</h3>
-                <span className="about-me__job">Фронтенд-разработчик, 25 лет</span>
+                <h3 className="about-me__name">Anastasiia</h3>
+                <span className="about-me__job">Front-end developer, 25 years old</span>
                 <p className="about-me__text">
-                    Я живу в Польше, в Варшаве. Закончила факультет международных отношений СПбГУ. Несколько лет работала копирайтером и SMM специалистом. Недавно начала кодить. Прошла курс веб-разработчика от Яндекс.Практикум и сейчас ищу
-                    работу на позицию junior web-developer. Увлекаюсь фотографией и танцами.
+                I live in Poland, in Warsaw. Graduated from the Faculty of International Relations of St. Petersburg State University. For several years, I worked as a copywriter and SMM specialist. Recently started coding. I took a web developer course from Yandex.Practicum and now I'm looking for 
+                a job as a junior front-end developer. I am fond of photography and dancing.
                 </p>
                 <div className="about-me__links">
                     <a className="about-me__link" href="https://www.facebook.com/miss.iuferova" target="_blank" rel="noreferrer">Facebook</a>

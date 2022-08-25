@@ -13,7 +13,7 @@ function FilterCheckbox ({handleCheck, checked}) {
                     onChange={handleCheck} />
                 <span className="checkbox__slider"></span>
             </label>
-            <p className="checkbox__text">Короткометражки</p>
+            <p className="checkbox__text">Short movies</p>
         </div>
         )
 }

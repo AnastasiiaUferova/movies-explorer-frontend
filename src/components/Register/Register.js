@@ -2,17 +2,15 @@ import React from "react";
 import './Register.css';
 import Form from "../Form/Form"
 
-
-
 function Register ({ handleRegister }) {
 
     return (
         <div className="register">
             <Form 
             handleSubmitRegister={handleRegister}
-            title={"Добро пожаловать!"}
-            button={"Зарегистрироваться"}
-            text ={"Уже зарегистрированы?"}
+            title={"Welcome!"}
+            button={"Register"}
+            text ={"Already registered?"}
             />
         </div>
         )

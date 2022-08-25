@@ -7,11 +7,11 @@ function Promo () {
     return (
         <div className="promo">
             <div className="promo__info">
-                <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
-                <span className="promo__subtitle">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</span>
+                <h1 className="promo__title">Educational project of a student of the Web Development Faculty.</h1>
+                <span className="promo__subtitle">Scroll below to learn more about this project and its creator.</span>
                 <NavTab />
             </div>
-            <img src={promoPic} alt="Логотип" className="promo__pic" />
+            <img src={promoPic} alt="Logo" className="promo__pic" />
         </div>
         )
 

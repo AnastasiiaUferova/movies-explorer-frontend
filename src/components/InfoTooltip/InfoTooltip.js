@@ -10,7 +10,7 @@ function InfoTooltip({isOpen, onClose, text, image}) {
                 <img
                 className="popup__info-image"
                 src={image}
-                alt="Знак подтверждения"
+                alt="confirmation sign"
                 />
                 <h2 className="popup__title">{text}</h2>
     

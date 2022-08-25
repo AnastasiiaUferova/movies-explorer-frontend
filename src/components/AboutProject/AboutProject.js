@@ -7,23 +7,23 @@ function AboutProject () {
     
     <div className="about-project" id="about-project">
         <div className="title-container">
-            <h2>О проекте</h2>
+            <h2>About project</h2>
         </div>
         <div className="about-project__info-table">
             <div className="about-project__info-block">
-                <h3 className="about-project__info-title">Дипломный проект включал 5 этапов</h3>
-                <p className="about-project__info">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
+                <h3 className="about-project__info-title">The diploma project included 5 stages</h3>
+                <p className="about-project__info">Making a plan, working on the back-end part, layout, adding functionality and final improvements.</p>
             </div>
             <div className="about-project__info-block">
-                <h3 className="about-project__info-title">На выполнение диплома ушло 5 недель</h3>
-                <p className="about-project__info">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
+                <h3 className="about-project__info-title">It took 5 weeks to complete the project</h3>
+                <p className="about-project__info">Each stage had a soft and hard deadline that had to be met in order to successfully complete the project.</p>
             </div>
         </div>
     
         <div className="about-project__time-table">
             <div className="about-project__time-block_back">
                 <div className="about-project__week-container_back">
-                    <p className="about-project__week">1 неделя</p>
+                    <p className="about-project__week">1 week</p>
                 </div>
                 <div className="about-project__week-text-container">
                     <p className="about-project__week-text">Back-end</p>
@@ -31,7 +31,7 @@ function AboutProject () {
             </div>
             <div className="about-project__time-block_front">
                 <div className="about-project__week-container_front">
-                    <p className="about-project__week">4 недели</p>
+                    <p className="about-project__week">4 weeks</p>
                 </div>
                 <div className="about-project__week-text-container">
                     <p className="about-project__week-text">Front-end</p>

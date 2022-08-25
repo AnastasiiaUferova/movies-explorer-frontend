@@ -5,24 +5,24 @@ import arrow from "../../images/arrow.svg"
 function Portfolio () {
     return (
         <div className="portfolio">
-        <h4 className="portfolio__title">Портфолио</h4>
+        <h4 className="portfolio__title">Portfolio</h4>
         <div className="portfolio__links">
             <div className="portfolio__link-container">
-                <p className="portfolio__subtitle">Статичный сайт</p>
+                <p className="portfolio__subtitle">Static website</p>
                 <a className="portfolio__link" href="https://anastasiiauferova.github.io/how-to-learn/index.html" target="_blank" rel="noreferrer">
-                    <img src={arrow} alt="Стрела" className="portfolio__pic" />
+                    <img src={arrow} alt="Arrow" className="portfolio__pic" />
                 </a>
             </div>
             <div className="portfolio__link-container">
-                <p className="portfolio__subtitle">Адаптивный сайт</p>
+                <p className="portfolio__subtitle">Responsive website</p>
                 <a className="portfolio__link" href="https://anastasiiauferova.github.io/russian-travel/" target="_blank" rel="noreferrer">
-                    <img src={arrow} alt="Стрела" className="portfolio__pic" />
+                    <img src={arrow} alt="Arrow" className="portfolio__pic" />
                 </a>
             </div>
             <div className="portfolio__link-container">
-                <p className="portfolio__subtitle">Одностраничное приложение</p>
-                <a className="portfolio__link" href="https://mesto-front.u.nomoredomains.xyz/signin" target="_blank" rel="noreferrer">
-                    <img src={arrow} alt="Стрела" className="portfolio__pic" />
+                <p className="portfolio__subtitle">Single Page Application</p>
+                <a className="portfolio__link" href="https://anastasiiauferova.github.io/react-mesto-auth/#/sign-in" target="_blank" rel="noreferrer">
+                    <img src={arrow} alt="Arrow" className="portfolio__pic" />
                 </a>
             </div>
         </div>

@@ -6,33 +6,33 @@ export default function validate(values) {
     let errors = {};
     
     if (!values.email) {
-        errors.email = "Это обязательное поле";
+        errors.email = "This is a required field";
     }
     else if (!emailPattern.test(values.email)) {
-        errors.email ="Введите валидный email";
+        errors.email ="Please enter a valid email";
     }
     
     if (!values.password) {
-        errors.password = "Это обязательное поле";
+        errors.password = "This is a required field";
     } else if (values.password.length < 2) {
-        errors.password = "Пароль должен более 2 символов";
+        errors.password = "Password must be more than 2 characters";
     }
 
     if (!values.name ) {
-        errors.name = "Это обязательное поле";
+        errors.name = "This is a required field";
     }
 
     else if (values.name.length === 1 ) {
-        errors.name = "Имя должно быть более 2 символов";
+        errors.name = "Name must be more than 2 characters";
     }
 
     else if (values.name.length === 1 && !namePattern.test(values.name)) {
-        errors.name = "Недопустимые символы";
+        errors.name = "Unacceptable symbols";
         
     }
 
     else if (values.name.length > 1  && !namePattern.test(values.name)) {
-        errors.name = "Недопустимые символы";
+        errors.name = "Unacceptable symbols";
         
     }
     

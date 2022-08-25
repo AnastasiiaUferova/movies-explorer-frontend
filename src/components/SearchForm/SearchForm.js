@@ -37,7 +37,7 @@ const [isValid, setIsValid] = useState(true)
     
         if (!isRequired(searchQuery)) {
             setIsValid(false);
-            setError("Нужно ввести ключевое слово");
+            setError("Keyword required");
         } 
         else {
             setIsValid(true);
@@ -68,7 +68,7 @@ const [isValid, setIsValid] = useState(true)
         <div className="search">
             <div className="search__container">
                 <form className="search__container-form" onSubmit={handleSubmit}>
-                    <input value={searchQuery} onChange={handleChangeQuery} className="search__input" placeholder="Фильм" type="text" ></input>
+                    <input value={searchQuery} onChange={handleChangeQuery} className="search__input" placeholder="Movie" type="text" ></input>
                     <button className="search__button" type="submit"></button>
                 </form>
                 <ErrorMessage text={error} isValid={isValid}/>

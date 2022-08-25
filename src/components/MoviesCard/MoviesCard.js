@@ -1,18 +1,11 @@
 import React from "react";
 import './MoviesCard.css'
 import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
 
-function MoviesCard ({card, onCardClick, isSaved, isLiked}) {
+function MoviesCard ({card, onCardClick, isSaved}) {
 
     let location = useLocation();
     const inSavedList = location.pathname === "/saved-movies";
-   // const [isLiked, setIsLiked] = useState(false);
-
-
-    /*const isSaved = JSON.parse(localStorage.getItem('saved-movies')).some(
-        (i) => i.movieId === card.movieId
-    );*/
 
     const cardClassName = () => {
 
@@ -53,15 +46,15 @@ function MoviesCard ({card, onCardClick, isSaved, isLiked}) {
     return (
         <div className="card">
             <a  className="card__pic-link" href={card.trailerLink} target="_blank" rel="noreferrer">
-            <img className="card__pic" src={imageOptions()} alt={`Постер к фильму "${card.nameRU}"`}></img>
+            <img className="card__pic" src={imageOptions()} alt={`Film poster for "${card.nameEN}"`}></img>
             </a>
             <div className="card__text-container">
-                <p className="card__text">{card.nameRU}</p>
+                <p className="card__text">{card.nameEN}</p>
                 <div className="card__button-container">
                     <button onClick={handleClick} className={cardClassName()} />
                 </div>
             </div>
-            <p className="card__time">{`${durationData.hours}ч${durationData.minutes}м`} </p>
+            <p className="card__time">{`${durationData.hours}h${durationData.minutes}m`} </p>
         </div>
         )
 }

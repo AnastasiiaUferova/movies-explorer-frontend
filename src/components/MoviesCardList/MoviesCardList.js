@@ -38,11 +38,6 @@ function MoviesCardList ({cards, query, isLoading, showError, activeSearch, save
         return initialList
     }
 
-    /*const [newRenderedCards, setNewRenderedCards] = useState(() => {
-        totalFilteredInitial()
-    });*/
-
-
     const totalFilteredSaved = () => {
         let initialSavedList = []
 
@@ -65,11 +60,11 @@ function MoviesCardList ({cards, query, isLoading, showError, activeSearch, save
                 setMoviesCount(5)
             }
         }, []
-    )  //общая функция 
+    )  //general function
 
 useEffect(() => {
         Resize(window.innerWidth)
-    }, [Resize]) // изначальная отрисовка
+    }, [Resize]) // initial rendering
 
     const dynamicResize = useDebouncedCallback(
         () => {
@@ -83,7 +78,7 @@ useEffect(() => {
     return () => {
             window.removeEventListener('resize', dynamicResize);
     } 
-}, [dynamicResize]) // при изменении ширины окна
+}, [dynamicResize]) // when changing window width
 
 
 
@@ -93,10 +88,6 @@ useEffect(() => {
             window.removeEventListener('resize', dynamicResize);
     } 
 }, [dynamicResize]) 
-
-/*useEffect(() => {
-
-}, []) */
 
 
 function handleRender () {
@@ -110,15 +101,15 @@ const additionalInitialComponent = () => {
     if (totalFilteredInitial().length === 0 && activeSearch) {
         return (
             <div className="card-list__message-container">
-                <p className="card-list__message">Ничего не найдено</p>
+                <p className="card-list__message">Nothing found</p>
             </div>
         )
     }
     if (totalFilteredInitial().length === 0 && showError) {
         return (
             <div className="card-list__message-container">
-                <p className="card-list__message">Во время запроса произошла ошибка. Возможно, проблема 
-                с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</p>
+                <p className="card-list__message">An error occurred during the request. Perhaps, there is a problem
+                with connection, or the server is unavailable. Wait a bit and try again.</p>
             </div>
         )
     }
@@ -131,15 +122,15 @@ const additionalSavedMoviesComponent = () => {
     if (totalFilteredSaved().length === 0 ) {
         return (
             <div className="card-list__message-container">
-                <p className="card-list__message">Ничего не найдено</p>
+                <p className="card-list__message">Nothing found</p>
             </div>
         )
     }
     if (totalFilteredSaved().length === 0 && showError) {
         return (
             <div className="card-list__message-container">
-                <p className="card-list__message">Во время запроса произошла ошибка. Возможно, проблема 
-                с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз</p>
+                <p className="card-list__message">An error occurred during the request. Perhaps, there is a problem
+                with connection, or the server is unavailable. Wait a bit and try again.</p>
             </div>
     
         )

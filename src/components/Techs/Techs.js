@@ -5,11 +5,11 @@ function Techs () {
     return (
         <div className="techs">
         <div className="title-container">
-            <h2>Технологии</h2>
+            <h2>Technologies</h2>
         </div>
         <div className="techs__info">
-            <h3 className="techs__info-title">7 технологий</h3>
-            <p className="techs__info-text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
+            <h3 className="techs__info-title">7 Technologies</h3>
+            <p className="techs__info-text">On the web development course, we mastered the technologies that we used in the graduation project.</p>
         </div>
     
         <div className="techs__grid-container">
@@ -27,7 +27,7 @@ function Techs () {
                 </div>
     
                 <div className="techs__grid-item">
-                    <p className="techs__grid-text">React</p>
+                    <p className="techs__grid-text">React.js</p>
                 </div>
     
                 <div className="techs__grid-item">

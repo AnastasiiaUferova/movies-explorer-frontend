@@ -82,7 +82,7 @@ function renderSavedCards () {
         })
         .catch((err) => {
             setImageTooltip(cross);
-            setTextTooltip("При загрузке фильмов произошла ошибка");
+            setTextTooltip("An error occurred while downloading movies.");
             setIsTooltipPopupOpen(true);
             console.log(err)
         })
@@ -101,7 +101,7 @@ function renderInitialCards() {
         })
         .catch((err) => {
             setImageTooltip(cross);
-            setTextTooltip("При загрузке фильмов произошла ошибка");
+            setTextTooltip("An error occurred while downloading movies.");
             setIsTooltipPopupOpen(true);
             console.log(err)
         })
@@ -120,7 +120,7 @@ function handleCardDelete(card) {
             })
             .catch(() => {
                 setImageTooltip(cross);
-                setTextTooltip("Невозможно удалить фильм");
+                setTextTooltip("Impossible to delete the film.");
                 setIsTooltipPopupOpen(true);
             })
     }
@@ -148,7 +148,7 @@ function handleCardAdd (data) {
             })
             .catch(() => {
                 setImageTooltip(cross);
-                setTextTooltip("Невозможно сохранить фильм");
+                setTextTooltip("Impossible to save the film.");
                 setIsTooltipPopupOpen(true);
             })
             .finally( () => {
@@ -175,19 +175,19 @@ function handleCardAdd (data) {
             .then((result) => {
                 setCurrentUser(result);
                 setImageTooltip(tick);
-                setTextTooltip("Вы успешно изменили данные профиля!");
+                setTextTooltip("You have successfully changed your profile data!");
                 setIsTooltipPopupOpen(true);
             })
             .catch((err) => {
                 setImageTooltip(cross);
-                if (err === "Ошибка 409") {
-                    setTextTooltip("Пользователь с таким email уже существует");
+                if (err === "Error 409") {
+                    setTextTooltip("User with this email already exists.");
                 }
-                if (err === "Ошибка 400") {
-                    setTextTooltip("Введены невалидные данные");
+                if (err === "Error 400") {
+                    setTextTooltip("Invalid data was entered.");
                 }
-                if (err === "Ошибка 500") {
-                    setTextTooltip("Ошибка сервера");
+                if (err === "Error 500") {
+                    setTextTooltip("Server error.");
                 }
                 setIsTooltipPopupOpen(true)
             });
@@ -202,21 +202,21 @@ function handleCardAdd (data) {
                     handleLogin(email, password)
                     setImageTooltip(tick);
                     setUserData({ name: name, email: email});
-                    setTextTooltip("Вы успешно зарегистрировались!");
+                    setTextTooltip("You have successfully registered!");
                     setIsTooltipPopupOpen(true);
                     setLoggedIn(true);
                     navigate("/movies");
             })
             .catch((err) => {
                 setImageTooltip(cross);
-                if (err === "Ошибка 409") {
-                    setTextTooltip("Пользователь с таким email уже существует");
+                if (err === "Error 409") {
+                    setTextTooltip("User with this email already exists.");
                 }
-                if (err === "Ошибка 400") {
-                    setTextTooltip("Введены невалидные данные");
+                if (err === "Error 400") {
+                    setTextTooltip("Invalid data was entered.");
                 }
-                if (err === "Ошибка 500") {
-                    setTextTooltip("Ошибка сервера");
+                if (err === "Error 500") {
+                    setTextTooltip("Server error.");
                 }
                 setIsTooltipPopupOpen(true)
 
@@ -234,17 +234,17 @@ function handleCardAdd (data) {
         })
         .catch((err) => {
             setImageTooltip(cross);
-            if (err === "Ошибка 409") {
-                setTextTooltip("Пользователь с таким email уже существует");
+            if (err === "Error 409") {
+                setTextTooltip("User with this email already exists.");
             }
-            else if (err === "Ошибка 400") {
-                setTextTooltip("Введены невалидные данные");
+            else if (err === "Error 400") {
+                setTextTooltip("Invalid data was entered.");
             }
-            else if (err === "Ошибка 500") {
-                setTextTooltip("Ошибка сервера");
+            else if (err === "Error 500") {
+                setTextTooltip("Server error.");
             }
-            else if (err === "Ошибка 401"){
-                setTextTooltip("Неправильные почта или пароль");
+            else if (err === "Error 401"){
+                setTextTooltip("Wrong email or password.");
             }
             setIsTooltipPopupOpen(true);
         });
@@ -264,11 +264,9 @@ function handleCardAdd (data) {
         }
     }
 
-
     function handlePopupClose () {
         setIsTooltipPopupOpen(false)
     }
-
 
     function handleSignOut() {
             localStorage.removeItem('token');
@@ -330,9 +328,7 @@ function handleCardAdd (data) {
         </div>
         </CurrentUserContext.Provider>
         </Fragment>
-        
     );
-
 }
 
 export default App;

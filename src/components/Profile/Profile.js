@@ -38,10 +38,10 @@ const differentValues = () => {
     return (
 <div className="profile">
     <form onSubmit={handleSubmit} className="profile__form">
-        <h1 className="profile__title">Привет, {values.name}!</h1>
+        <h1 className="profile__title">Hello, {values.name}!</h1>
 
         <div className="profile__input-container">
-            <label className="profile__input-container-label">Имя</label>
+            <label className="profile__input-container-label">Name</label>
             <input value={values.name || ""} onChange={handleChange} id="profile-input-name" type="text" name="name" className="profile__item-input profile__item-input_type_name" defaultValue={currentUser.name} />
         </div>
         <ErrorMessage isValid={isValid} text={errors.name} />
@@ -53,8 +53,8 @@ const differentValues = () => {
         <ErrorMessage isValid={isValid} text={errors.email} />
 
         <div className="profile__link-container">
-            <button type="submit" disabled={!isValid || !differentValues()} className="profile__button">Редактировать</button>
-            <button onClick={signOut} className="profile__button"><NavLink className="profile__link" to="/">Выйти из аккаунта</NavLink></button>
+            <button type="submit" disabled={!isValid || !differentValues()} className="profile__button">Edit</button>
+            <button onClick={signOut} className="profile__button"><NavLink className="profile__link" to="/">Logout</NavLink></button>
         </div>
     </form>
 </div>

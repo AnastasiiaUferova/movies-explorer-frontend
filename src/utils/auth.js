@@ -5,7 +5,7 @@ const checkResponse = (response) => {
   if (response.ok) {
     return response.json()
   }
-  return Promise.reject(`Ошибка ${response.status}`);
+  return Promise.reject(`Error ${response.status}`);
 }
 
 

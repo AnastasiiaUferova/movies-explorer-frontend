@@ -32,12 +32,12 @@ function BurgerMenu() {
         </div>
         <div className={menuOpenClassName}>
             <ul className="menu__box">
-                <li className="menu__link-item"><NavLink to="/" className="menu__link">Главная</NavLink></li>
-                <li className="menu__link-item"><NavLink to="/movies" className="menu__link">Фильмы</NavLink></li>
-                <li className="menu__link-item"><NavLink to="/saved-movies" className="menu__link">Сохраненные фильмы</NavLink></li>
+                <li className="menu__link-item"><NavLink to="/" className="menu__link">Main Page</NavLink></li>
+                <li className="menu__link-item"><NavLink to="/movies" className="menu__link">Movies</NavLink></li>
+                <li className="menu__link-item"><NavLink to="/saved-movies" className="menu__link">Saved Movies</NavLink></li>
             </ul>
             <div className="navigation__acc-container navigation__acc-container_type_menu">
-                <NavLink to="/profile" className="navigation__acc">Аккаунт</NavLink>
+                <NavLink to="/profile" className="navigation__acc">Profile</NavLink>
                 <div className="navigation__pic-container">
                     <img src={profile} alt="Логотип профиля" className="navigation__pic" />
                 </div>
