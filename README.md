@@ -24,7 +24,7 @@ Frontend of a diploma project for Yandex Praktikum. This project is a multi-page
 ### API used
 
 * external API provided by Yandex in collaboration with Beat Film Festival - database with documentaries (a user will search for movies from this DB)
-* backend part of the service written in Express.js and used for user registration, athorization, saving movies in favorites, changing user information ([check out the backend of the project](https://github.com/AnastasiiaUferova/movies-explorer-api).
+* backend part of the service written in Express.js and used for user registration, athorization, saving movies in favorites, changing user information ([check out the backend of the project](https://github.com/AnastasiiaUferova/movies-explorer-api)).
 
 ### Layout features
 
