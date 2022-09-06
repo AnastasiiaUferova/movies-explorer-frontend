@@ -69,5 +69,5 @@ npm run build
 npm run start
 ```
 
-## Future project development
-Deploy the project at the cloud server so it'll be available together via URL.
+## Link to the project 
+https://movie-explorer.nomoredomains.xyz 
