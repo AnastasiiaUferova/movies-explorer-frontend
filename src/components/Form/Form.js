@@ -59,7 +59,7 @@ function Form({handleSubmitRegister, title, text, button, handleSubmitLogin}) {
 
     return (
         <form className="form" onSubmit={handleSubmit}>
-        <NavLink className="profile__link" to="/"><img src={logo} alt="Логотип" className="form__logo"/></NavLink>
+        <NavLink className="profile__link" to="/"><img src={logo} alt="Logo" className="form__logo"/></NavLink>
         <h1 className="form__title">{title}</h1>
     
         {location.pathname === "/signup" && NameInput()
@@ -69,7 +69,7 @@ function Form({handleSubmitRegister, title, text, button, handleSubmitLogin}) {
         <input onChange={handleChange} id="input_email" name="email" type="email" className="form__item-input" value={values.email || ''}  />
         <ErrorMessage  isValid={isValid} text={errors.email}/>
         
-        <p className="form__item-text">Пароль</p>
+        <p className="form__item-text">Password</p>
         <input onChange={handleChange} value={values.password || ''} id="input_password" type="password" name="password" className="form__item-input" />
         <ErrorMessage  isValid={isValid} text={errors.password}/>
         
@@ -78,9 +78,9 @@ function Form({handleSubmitRegister, title, text, button, handleSubmitLogin}) {
         <div className="form__link-container">
             <p className="form__link-text">{text}</p>
             {location.pathname.includes("/signup") && (
-            <NavLink className="form__link " to="/signin">Войти</NavLink>
+            <NavLink className="form__link " to="/signin">Login</NavLink>
             )} {location.pathname.includes("/signin") && (
-            <NavLink className="form__link" to="/signup">Регистрация</NavLink>
+            <NavLink className="form__link" to="/signup">Register</NavLink>
             )}
         </div>
     </form>

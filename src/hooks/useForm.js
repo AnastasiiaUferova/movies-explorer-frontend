@@ -17,8 +17,10 @@ const [values, setValues] = useState({
 
 const [errors, setErrors] = useState({});
 const [isSubmitting, setIsSubmitting] = useState(false);
-const [isValid, setIsValid] = useState(false);
+const [isValid, setIsValid] = useState(true);
 const [isDirty, setIsDirty] = useState(false);
+
+
 
 useEffect(() => {
     if(location.pathname === "/profile")
@@ -53,7 +55,7 @@ useEffect(() => {
 
 useEffect(() => {
     if(location.pathname === "/signup"){
-    if (Object.keys(errors).length !== 0 || !isDirty) {
+    if (Object.keys(errors).length !== 0 || isDirty) {
         setIsValid(false)
 
     }

@@ -4,7 +4,7 @@
     font-weight: 400;
     font-size: 10px;
     line-height: 12px;
-    color: #ee3465;
+    color: #fafafa;
     margin-top: 10px;
     visibility: hidden;
     height: 10px;
@@ -15,5 +15,5 @@
 .error-message__text_visible {
     visibility: visible;
     opacity: 100%;
-
+    color: #ee3465;
 }
