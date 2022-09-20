@@ -41,13 +41,11 @@ const resetForm = () => {
 }
 
 
-
 useEffect(() => {
     if(location.pathname === "/signup"){
     if (Object.keys(errors).length === 0 && isSubmitting) {
         callback();
         setIsSubmitting(false)
-        resetForm()
     }
 }
 }, [errors, isSubmitting, callback, location.pathname ]);
@@ -55,7 +53,7 @@ useEffect(() => {
 
 useEffect(() => {
     if(location.pathname === "/signup"){
-    if (Object.keys(errors).length !== 0 || isDirty) {
+    if (Object.keys(errors).length !== 0) {
         setIsValid(false)
 
     }

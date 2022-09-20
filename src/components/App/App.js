@@ -206,6 +206,7 @@ function handleCardAdd (data) {
                     setIsTooltipPopupOpen(true);
                     setLoggedIn(true);
                     navigate("/movies");
+                    console.log('done')
             })
             .catch((err) => {
                 setImageTooltip(cross);
