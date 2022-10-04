@@ -35,12 +35,12 @@ Frontend of a diploma project for Yandex Praktikum. This project is a multi-page
 * The page with movies is empty until a user carries out the first search. 
 
 ### Routes
-```/ ```— main page
-```/movies``` — movies library
-```/saved-movies``` — library with favorite movies
-```/profile``` — user profile
-```/signin & /signup``` — pages of registration and authorization
-```/*``` — 404 page
+* ```/ ```— main page
+* ```/movies``` — movies library
+* ```/saved-movies``` — library with favorite movies
+* ```/profile``` — user profile
+* ```/signin & /signup``` — pages of registration and authorization
+* ```/*``` — 404 page
 
 ## Technologies used
 
