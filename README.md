@@ -68,6 +68,3 @@ npm run build
 
 npm run start
 ```
-
-## Link to the project 
-https://movie-explorer.nomoredomains.xyz 
