@@ -19,7 +19,7 @@ Frontend of a diploma project for Yandex Praktikum. This project is a multi-page
 *  Filter movies according to their length (filter short movies);
 *  Save favorite movies in favorites;
 *  Delete movies from favorites;
-*  Cahcnge user information (name, email) in the profile page
+*  Change user information (name, email) in the profile page
 
 ### API used
 
